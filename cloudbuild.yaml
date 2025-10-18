@@ -7,11 +7,8 @@ steps:
     - |
       cd iac
       terraform init
-      # Replace with your actual project ID and Document AI processor path from initial terraform apply
-      terraform plan -var="project_id=project-processing-475110" -var="document_ai_processor_id=projects/project-processing-475110/locations/eu/processors/936d78612d21613"
+      terraform plan -var="project_id=${PROJECT_ID}" -var="document_ai_processor_id=projects/${PROJECT_ID}/locations/eu/processors/${_DOCUMENT_AI_PROCESSOR_ID}"
   id: 'terraform-plan'
-  # Do not apply here for production; manual approval is better.
-  # For testing, you could add apply here, but usually, infrastructure changes are separate.
 
 # 2. Deploy Frontend to GCS
 - name: 'gcr.io/cloud-builders/gsutil'
@@ -28,11 +25,11 @@ steps:
     - '--trigger-http'
     - '--entry-point=match_resume'
     - '--source=./backend/cloud-function'
-    - '--region=eu' 
+    - '--region=europe-west1' 
     - '--service-account=resume-matcher-cf-sa@${PROJECT_ID}.iam.gserviceaccount.com'
     - '--timeout=300s'
     - '--memory=512MB'
-    - '--set-env-vars=KEYWORD_DATA_BUCKET=${_KEYWORD_DATA_BUCKET_NAME},DOCUMENT_AI_PROCESSOR_ID=projects/${PROJECT_NUMBER}/locations/us-central1/processors/<YOUR_DOCUMENT_AI_PROCESSOR_ID}' # Pass ENV vars again for explicit deploy
+    - '--set-env-vars=KEYWORD_DATA_BUCKET=${_KEYWORD_DATA_BUCKET_NAME},DOCUMENT_AI_PROCESSOR_ID=projects/${PROJECT_ID}/locations/eu/processors/${_DOCUMENT_AI_PROCESSOR_ID}'
   id: 'deploy-cloud-function'
 
 # 4. Upload Keyword Data (if not manually uploaded)
@@ -40,6 +37,7 @@ steps:
   args: ['-m', 'cp', '-r', './keyword-data/*', 'gs://${_KEYWORD_DATA_BUCKET_NAME}/']
   id: 'upload-keyword-data'
 
+logging: CLOUD_LOGGING_ONLY
 
 substitutions:
   _FRONTEND_BUCKET_NAME: "resume-matcher-frontend" 
