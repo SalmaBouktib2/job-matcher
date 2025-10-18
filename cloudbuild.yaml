@@ -37,7 +37,8 @@ steps:
   args: ['-m', 'cp', '-r', './keyword-data/*', 'gs://${_KEYWORD_DATA_BUCKET_NAME}/']
   id: 'upload-keyword-data'
 
-logging: CLOUD_LOGGING_ONLY
+options:
+  logging: CLOUD_LOGGING_ONLY
 
 substitutions:
   _FRONTEND_BUCKET_NAME: "resume-matcher-frontend" 
