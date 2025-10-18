@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Matcher</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Resume-to-Job Matcher</h1>
+
+        <div class="input-section">
+            <label for="resumeFile">Upload Resume (PDF/DOCX):</label>
+            <input type="file" id="resumeFile" accept=".pdf,.docx">
+        </div>
+
+        <div class="input-section">
+            <label for="jobDescription">Paste Job Description:</label>
+            <textarea id="jobDescription" rows="10" placeholder="Paste your job description here..."></textarea>
+        </div>
+
+        <button id="submitBtn">Analyze Match</button>
+
+        <div id="loadingIndicator" class="hidden">Analyzing...</div>
+
+        <div id="results" class="hidden">
+            <h2>Match Results</h2>
+            <p>Match Percentage: <strong id="matchPercentage"></strong></p>
+            <h3>Matched Skills:</h3>
+            <ul id="matchedSkills"></ul>
+            <h3>Missing Skills:</h3>
+            <ul id="missingSkills"></ul>
+            <div id="errorMessage" class="error-message"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

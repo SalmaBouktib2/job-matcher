@@ -1,0 +1,4 @@
+functions-framework
+google-cloud-storage==2.*
+google-cloud-documentai==2.*
+Flask==2.* # Functions Framework uses Flask underneath

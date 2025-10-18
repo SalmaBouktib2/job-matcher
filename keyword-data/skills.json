@@ -1,0 +1,26 @@
+{
+  "programming_languages": [
+    {"term": "python", "aliases": ["python3", "py"], "weight": 1.0},
+    {"term": "java", "aliases": ["jdk"], "weight": 1.0},
+    {"term": "javascript", "aliases": ["js", "node.js", "nodejs"], "weight": 1.0},
+    {"term": "scala", "weight": 1.0},
+    {"term": "go", "aliases": ["golang"], "weight": 1.0}
+  ],
+  "cloud_platforms": [
+    {"term": "gcp", "aliases": ["google cloud", "google cloud platform"], "weight": 1.2},
+    {"term": "aws", "aliases": ["amazon web services"], "weight": 1.2},
+    {"term": "azure", "aliases": ["microsoft azure"], "weight": 1.2}
+  ],
+  "databases": [
+    {"term": "postgresql", "aliases": ["postgres"], "weight": 0.8},
+    {"term": "mysql", "weight": 0.8},
+    {"term": "mongodb", "aliases": ["mongo"], "weight": 0.8},
+    {"term": "cassandra", "weight": 0.8}
+  ],
+  "devops_tools": [
+    {"term": "kubernetes", "aliases": ["k8s"], "weight": 1.1},
+    {"term": "docker", "aliases": ["docker-compose"], "weight": 1.1},
+    {"term": "terraform", "weight": 1.1},
+    {"term": "ansible", "weight": 1.0}
+  ]
+}

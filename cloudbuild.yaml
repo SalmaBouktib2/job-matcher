@@ -1,0 +1,47 @@
+steps:
+# 1. (Optional) Run Terraform Init and Plan for validation
+- name: 'hashicorp/terraform:latest'
+  entrypoint: 'sh'
+  args:
+    - '-c'
+    - |
+      cd iac
+      terraform init
+      # Replace with your actual project ID and Document AI processor path from initial terraform apply
+      terraform plan -var="project_id=project-processing-475110" -var="document_ai_processor_id=projects/project-processing-475110/locations/eu/processors/936d78612d21613"
+  id: 'terraform-plan'
+  # Do not apply here for production; manual approval is better.
+  # For testing, you could add apply here, but usually, infrastructure changes are separate.
+
+# 2. Deploy Frontend to GCS
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['-m', 'rsync', '-r', './frontend/', 'gs://${_FRONTEND_BUCKET_NAME}/']
+  id: 'deploy-frontend'
+
+# 3. Zip and Deploy Cloud Function
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+    - 'functions'
+    - 'deploy'
+    - 'match-resume'
+    - '--runtime=python310'
+    - '--trigger-http'
+    - '--entry-point=match_resume'
+    - '--source=./backend/cloud-function'
+    - '--region=eu' 
+    - '--service-account=resume-matcher-cf-sa@${PROJECT_ID}.iam.gserviceaccount.com'
+    - '--timeout=300s'
+    - '--memory=512MB'
+    - '--set-env-vars=KEYWORD_DATA_BUCKET=${_KEYWORD_DATA_BUCKET_NAME},DOCUMENT_AI_PROCESSOR_ID=projects/${PROJECT_NUMBER}/locations/us-central1/processors/<YOUR_DOCUMENT_AI_PROCESSOR_ID}' # Pass ENV vars again for explicit deploy
+  id: 'deploy-cloud-function'
+
+# 4. Upload Keyword Data (if not manually uploaded)
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['-m', 'cp', '-r', './keyword-data/*', 'gs://${_KEYWORD_DATA_BUCKET_NAME}/']
+  id: 'upload-keyword-data'
+
+
+substitutions:
+  _FRONTEND_BUCKET_NAME: "resume-matcher-frontend" 
+  _KEYWORD_DATA_BUCKET_NAME: "resume-matcher-keywords" 
+  _DOCUMENT_AI_PROCESSOR_ID: "936d78612d21613"
