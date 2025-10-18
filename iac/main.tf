@@ -36,8 +36,13 @@ resource "google_project_iam_member" "cf_storage_viewer" {
 
 resource "google_project_iam_member" "cf_documentai_user" {
   project = var.project_id
-  role    = "roles/documentai.user"
+  role    = "roles/documentai.apiUser"
   member  = "serviceAccount:${google_service_account.cf_service_account.email}"
+  condition {
+    title       = "Processor specific access"
+    description = "Grants documentai.apiUser role to a specific Document AI processor"
+    expression  = "resource.name == \"${var.document_ai_processor_id}\""
+  }
 }
 
 # Cloud Function (code will be deployed by Cloud Build later)

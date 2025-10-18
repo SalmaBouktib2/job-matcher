@@ -6,7 +6,7 @@ variable "project_id" {
 variable "region" {
   description = "The GCP region to deploy resources."
   type        = string
-  default     = "eu" 
+  default     = "europe-west1" 
 }
 
 variable "frontend_bucket_name" {
