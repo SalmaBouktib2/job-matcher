@@ -1,17 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const matchForm = document.getElementById('matchForm');
     const resumeFileInput = document.getElementById('resumeFile');
     const jobDescriptionTextarea = document.getElementById('jobDescription');
     const submitBtn = document.getElementById('submitBtn');
-    const loadingIndicator = document.getElementById('loadingIndicator');
+    const btnText = document.querySelector('.btn-text');
+    const loader = document.querySelector('.loader');
     const resultsDiv = document.getElementById('results');
     const matchPercentageSpan = document.getElementById('matchPercentage');
-    const matchedSkillsList = document.getElementById('matchedSkills');
     const missingSkillsList = document.getElementById('missingSkills');
     const errorMessageDiv = document.getElementById('errorMessage');
     const CLOUD_FUNCTION_URL = "https://europe-west1-project-processing-475110.cloudfunctions.net/match-resume";
 
+    matchForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-    submitBtn.addEventListener('click', async () => {
         const resumeFile = resumeFileInput.files[0];
         const jobDescriptionText = jobDescriptionTextarea.value;
 
@@ -22,7 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         resultsDiv.classList.add('hidden');
         errorMessageDiv.classList.add('hidden');
-        loadingIndicator.classList.remove('hidden');
+        btnText.classList.add('hidden');
+        loader.classList.remove('hidden');
         submitBtn.disabled = true;
 
         try {
@@ -50,21 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             matchPercentageSpan.textContent = `${data.match_percentage}%`;
 
-            matchedSkillsList.innerHTML = '';
-            if (data.matched_skills && data.matched_skills.length > 0) {
-                data.matched_skills.forEach(skill => {
-                    const li = document.createElement('li');
-                    li.textContent = skill;
-                    matchedSkillsList.appendChild(li);
-                });
-            } else {
-                 matchedSkillsList.innerHTML = '<li>No significant matched skills found.</li>';
-            }
-
-
             missingSkillsList.innerHTML = '';
             if (data.missing_skills && data.missing_skills.length > 0) {
-                data.missing_skills.forEach(skill => {
+                // Display only top 5 missing skills
+                data.missing_skills.slice(0, 5).forEach(skill => {
                     const li = document.createElement('li');
                     li.textContent = skill;
                     missingSkillsList.appendChild(li);
@@ -73,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 missingSkillsList.innerHTML = '<li>No significant missing skills identified.</li>';
             }
 
-
             resultsDiv.classList.remove('hidden');
 
         } catch (error) {
@@ -81,7 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
             errorMessageDiv.textContent = 'An unexpected error occurred. Please try again.';
             errorMessageDiv.classList.remove('hidden');
         } finally {
-            loadingIndicator.classList.add('hidden');
+            btnText.classList.remove('hidden');
+            loader.classList.add('hidden');
             submitBtn.disabled = false;
         }
     });
@@ -91,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = () => {
-                // Extract base64 part (after "data:mime/type;base64,")
                 const base64String = reader.result.split(',')[1];
                 resolve(base64String);
             };

@@ -9,11 +9,12 @@ This project is a simple web application that matches job descriptions with resu
 *   Upload a job description (or paste its content).
 *   Get a match score based on common keywords.
 
-## Technologies Used
+
 
 *   **Frontend:** HTML, CSS, JavaScript
 *   **Backend:** Python (Cloud Function)
 *   **Infrastructure as Code (IaC):** Terraform
+*   **CI/CD:** Google Cloud Build
 
 ## Project Structure
 
@@ -23,7 +24,8 @@ job-matcher/
 │   └── cloud-function/ # Python backend for resume and job description processing
 ├── frontend/           # HTML, CSS, and JS for the user interface
 ├── iac/                # Terraform files for infrastructure deployment
-└── keyword-data/       # Data files for keyword extraction
+├── keyword-data/       # Data files for keyword extraction
+└── cloudbuild.yaml     # Google Cloud Build configuration for CI/CD
 ```
 
 ## Setup and Deployment
@@ -38,6 +40,9 @@ job-matcher/
 
 3.  **Frontend:**
     *   The frontend is a simple static website that can be opened directly in a browser or hosted on a web server. It interacts with the deployed Cloud Function.
+
+4.  **CI/CD:**
+    *   The `cloudbuild.yaml` file contains the configuration for continuous integration and deployment using Google Cloud Build. You can set up a trigger in your Google Cloud project to automatically build and deploy the application when changes are pushed to your repository.
 
 ## Usage
 

@@ -1,72 +1,188 @@
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #50e3c2;
+    --background-color: #f8f9fa;
+    --text-color: #333;
+    --container-bg: #ffffff;
+    --border-radius: 12px;
+    --box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
 }
+
+header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+header p {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-width: 700px;
+    margin: -40px auto 40px;
+    padding: 40px;
+    background-color: var(--container-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    position: relative;
+    z-index: 2;
 }
-h1, h2, h3 {
-    color: #0056b3;
+
+.input-group {
+    margin-bottom: 25px;
 }
-.input-section {
-    margin-bottom: 15px;
-}
+
 label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 1rem;
 }
+
 input[type="file"], textarea {
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box; /* Include padding in width */
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
+
+input[type="file"]:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
 textarea {
     resize: vertical;
 }
+
 button {
-    background-color: #007bff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
-    padding: 10px 20px;
+    padding: 15px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.3s;
+    position: relative;
 }
+
 button:hover {
-    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.loader {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 .hidden {
     display: none;
 }
-#loadingIndicator {
-    margin-top: 20px;
-    font-style: italic;
+
+#results {
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+}
+
+#results h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.match-percentage-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.match-percentage-container p {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+#matchPercentage {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+#missing-skills-container h3 {
+    margin-bottom: 15px;
     color: #555;
 }
-#results {
-    margin-top: 30px;
-    border-top: 1px solid #eee;
-    padding-top: 20px;
-}
+
 #results ul {
-    list-style-type: disc;
-    padding-left: 20px;
+    list-style-type: none;
+    padding-left: 0;
 }
+
 #results li {
-    margin-bottom: 5px;
+    background-color: #f1f1f1;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-weight: 500;
 }
+
 .error-message {
-    color: red;
+    color: #e74c3c;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #fbeaea;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: #777;
+    font-size: 0.9rem;
 }

@@ -2,9 +2,28 @@
   "programming_languages": [
     {"term": "python", "aliases": ["python3", "py"], "weight": 1.0},
     {"term": "java", "aliases": ["jdk"], "weight": 1.0},
-    {"term": "javascript", "aliases": ["js", "node.js", "nodejs"], "weight": 1.0},
+    {"term": "javascript", "aliases": ["js", "node.js", "nodejs", "es6"], "weight": 1.0},
+    {"term": "typescript", "aliases": ["ts"], "weight": 1.0},
     {"term": "scala", "weight": 1.0},
-    {"term": "go", "aliases": ["golang"], "weight": 1.0}
+    {"term": "go", "aliases": ["golang"], "weight": 1.0},
+    {"term": "c++", "aliases": ["cpp"], "weight": 1.0},
+    {"term": "c#", "aliases": ["csharp"], "weight": 1.0},
+    {"term": "ruby", "weight": 1.0},
+    {"term": "rust", "weight": 1.0},
+    {"term": "swift", "weight": 1.0},
+    {"term": "kotlin", "weight": 1.0},
+    {"term": "php", "weight": 1.0},
+    {"term": "html", "aliases": ["html5"], "weight": 0.5},
+    {"term": "css", "aliases": ["css3"], "weight": 0.5}
+  ],
+  "web_frameworks": [
+    {"term": "react", "aliases": ["react.js", "reactjs"], "weight": 1.1},
+    {"term": "angular", "aliases": ["angular.js", "angularjs"], "weight": 1.1},
+    {"term": "vue", "aliases": ["vue.js", "vuejs"], "weight": 1.1},
+    {"term": "django", "weight": 1.1},
+    {"term": "flask", "weight": 1.1},
+    {"term": "spring", "aliases": ["spring boot"], "weight": 1.1},
+    {"term": "express", "aliases": ["express.js"], "weight": 1.0}
   ],
   "cloud_platforms": [
     {"term": "gcp", "aliases": ["google cloud", "google cloud platform"], "weight": 1.2},
@@ -15,12 +34,78 @@
     {"term": "postgresql", "aliases": ["postgres"], "weight": 0.8},
     {"term": "mysql", "weight": 0.8},
     {"term": "mongodb", "aliases": ["mongo"], "weight": 0.8},
-    {"term": "cassandra", "weight": 0.8}
+    {"term": "cassandra", "weight": 0.8},
+    {"term": "redis", "weight": 0.8},
+    {"term": "sqlite", "weight": 0.8},
+    {"term": "oracle", "weight": 0.8}
   ],
   "devops_tools": [
     {"term": "kubernetes", "aliases": ["k8s"], "weight": 1.1},
     {"term": "docker", "aliases": ["docker-compose"], "weight": 1.1},
     {"term": "terraform", "weight": 1.1},
-    {"term": "ansible", "weight": 1.0}
+    {"term": "ansible", "weight": 1.0},
+    {"term": "jenkins", "weight": 1.0},
+    {"term": "git", "weight": 1.0},
+    {"term": "gitlab", "weight": 1.0},
+    {"term": "circleci", "weight": 1.0},
+    {"term": "travis ci", "weight": 1.0}
+  ],
+  "data_science": [
+    {"term": "pandas", "weight": 1.1},
+    {"term": "numpy", "weight": 1.1},
+    {"term": "scikit-learn", "aliases": ["sklearn"], "weight": 1.1},
+    {"term": "tensorflow", "weight": 1.1},
+    {"term": "pytorch", "weight": 1.1},
+    {"term": "matplotlib", "weight": 1.0},
+    {"term": "seaborn", "weight": 1.0}
+  ],
+  "concepts": [
+    {"term": "agile", "weight": 0.7},
+    {"term": "scrum", "weight": 0.7},
+    {"term": "rest", "aliases": ["restful"], "weight": 0.9},
+    {"term": "microservices", "weight": 0.9},
+    {"term": "api", "weight": 0.9},
+    {"term": "ci/cd", "weight": 1.0},
+    {"term": "machine learning", "aliases": ["ml"], "weight": 1.2},
+    {"term": "data structures", "weight": 1.0},
+    {"term": "algorithms", "weight": 1.0}
+  ],
+  "operating_systems": [
+    {"term": "linux", "aliases": ["debian", "ubuntu", "centos", "red hat"], "weight": 0.7},
+    {"term": "windows", "weight": 0.7},
+    {"term": "macos", "aliases": ["mac"], "weight": 0.7}
+  ],
+  "big_data": [
+    {"term": "hadoop", "weight": 1.1},
+    {"term": "spark", "aliases": ["apache spark"], "weight": 1.1},
+    {"term": "kafka", "aliases": ["apache kafka"], "weight": 1.1},
+    {"term": "flink", "aliases": ["apache flink"], "weight": 1.1},
+    {"term": "hive", "aliases": ["apache hive"], "weight": 1.1}
+  ],
+  "mobile_development": [
+    {"term": "ios", "weight": 1.0},
+    {"term": "android", "weight": 1.0},
+    {"term": "react native", "weight": 1.1},
+    {"term": "flutter", "weight": 1.1}
+  ],
+  "testing_frameworks": [
+    {"term": "jest", "weight": 1.0},
+    {"term": "mocha", "weight": 1.0},
+    {"term": "chai", "weight": 1.0},
+    {"term": "selenium", "weight": 1.0},
+    {"term": "pytest", "weight": 1.0},
+    {"term": "junit", "weight": 1.0}
+  ],
+  "project_management": [
+    {"term": "jira", "weight": 0.8},
+    {"term": "trello", "weight": 0.8},
+    {"term": "asana", "weight": 0.8},
+    {"term": "confluence", "weight": 0.8}
+  ],
+  "design_tools": [
+    {"term": "figma", "weight": 0.9},
+    {"term": "sketch", "weight": 0.9},
+    {"term": "adobe xd", "weight": 0.9},
+    {"term": "invision", "weight": 0.9}
   ]
 }
