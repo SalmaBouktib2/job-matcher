@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const matchForm = document.getElementById('matchForm');
+    console.log("DOM fully loaded and parsed");
+
     const resumeFileInput = document.getElementById('resumeFile');
     const jobDescriptionTextarea = document.getElementById('jobDescription');
     const submitBtn = document.getElementById('submitBtn');
@@ -11,26 +12,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorMessageDiv = document.getElementById('errorMessage');
     const CLOUD_FUNCTION_URL = "https://europe-west1-project-processing-475110.cloudfunctions.net/match-resume";
 
-    matchForm.addEventListener('submit', async (e) => {
+    if (!submitBtn) {
+        console.error("Submit button not found!");
+        return;
+    }
+    console.log("Submit button found");
+
+    submitBtn.addEventListener('click', async (e) => {
+        console.log("Analyze Match button clicked");
         e.preventDefault();
 
         const resumeFile = resumeFileInput.files[0];
         const jobDescriptionText = jobDescriptionTextarea.value;
 
         if (!resumeFile || !jobDescriptionText) {
+            console.log("Resume file or job description is missing.");
             alert('Please upload a resume and paste a job description.');
             return;
         }
+        console.log("Resume file and job description are present.");
 
         resultsDiv.classList.add('hidden');
         errorMessageDiv.classList.add('hidden');
         btnText.classList.add('hidden');
         loader.classList.remove('hidden');
         submitBtn.disabled = true;
+        console.log("UI updated for loading state.");
 
         try {
+            console.log("Converting file to base64...");
             const resumeB64 = await fileToBase64(resumeFile);
+            console.log("File converted to base64.");
 
+            console.log("Sending request to cloud function...");
             const response = await fetch(CLOUD_FUNCTION_URL, {
                 method: 'POST',
                 headers: {
@@ -42,20 +56,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     job_description_text: jobDescriptionText,
                 }),
             });
+            console.log("Response received from cloud function.");
 
             const data = await response.json();
 
             if (!response.ok) {
+                console.error("Server error:", data.error);
                 errorMessageDiv.textContent = data.error || `Server error: ${response.status}`;
                 errorMessageDiv.classList.remove('hidden');
                 return;
             }
 
+            console.log("Updating UI with results...");
             matchPercentageSpan.textContent = `${data.match_percentage}%`;
 
             missingSkillsList.innerHTML = '';
             if (data.missing_skills && data.missing_skills.length > 0) {
-                // Display only top 5 missing skills
                 data.missing_skills.slice(0, 5).forEach(skill => {
                     const li = document.createElement('li');
                     li.textContent = skill;
@@ -66,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             resultsDiv.classList.remove('hidden');
+            console.log("UI updated with results.");
 
         } catch (error) {
             console.error('Error:', error);
@@ -75,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btnText.classList.remove('hidden');
             loader.classList.add('hidden');
             submitBtn.disabled = false;
+            console.log("UI restored from loading state.");
         }
     });
 
