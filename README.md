@@ -53,4 +53,4 @@ job-matcher/
 
 ## Screenshot
 
-![App Screenshot](<INSERT SCREENSHOT HERE>)
+![App Screenshot](![alt text](image.png))

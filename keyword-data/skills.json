@@ -61,7 +61,8 @@
     {"term": "ecs", "weight": 1.1},
     {"term": "dynamodb", "weight": 1.1},
     {"term": "sqs", "weight": 1.0},
-    {"term": "sns", "weight": 1.0}
+    {"term": "sns", "weight": 1.0},
+    {"term": "kinesis", "weight": 1.1}
   ],
   "cloud_platforms_azure": [
     {"term": "azure", "aliases": ["microsoft azure"], "weight": 1.2},
@@ -82,7 +83,8 @@
     {"term": "oracle", "weight": 0.8},
     {"term": "mariadb", "weight": 0.8},
     {"term": "couchbase", "weight": 0.8},
-    {"term": "firebase", "weight": 0.8}
+    {"term": "firebase", "weight": 0.8},
+    {"term": "snowflake", "weight": 1.1}
   ],
   "devops_tools": [
     {"term": "kubernetes", "aliases": ["k8s"], "weight": 1.1},
@@ -97,7 +99,9 @@
     {"term": "spinnaker", "weight": 1.0},
     {"term": "argocd", "weight": 1.0},
     {"term": "prometheus", "weight": 1.0},
-    {"term": "grafana", "weight": 1.0}
+    {"term": "grafana", "weight": 1.0},
+    {"term": "dbt", "weight": 1.1},
+    {"term": "monitoring", "weight": 0.9}
   ],
   "data_science_ml_ai": [
     {"term": "pandas", "weight": 1.1},
@@ -125,14 +129,25 @@
     {"term": "tdd", "aliases": ["test driven development"], "weight": 0.8},
     {"term": "bdd", "aliases": ["behavior driven development"], "weight": 0.8},
     {"term": "ddd", "aliases": ["domain driven design"], "weight": 0.8},
-    {"term": "solid", "weight": 0.8}
+    {"term": "solid", "weight": 0.8},
+    {"term": "data modeling", "aliases": ["data schema design"], "weight": 1.0},
+    {"term": "data pipelines", "weight": 1.1},
+    {"term": "data ingestion", "weight": 1.0},
+    {"term": "data governance", "weight": 0.9},
+    {"term": "compliance", "weight": 0.8},
+    {"term": "performance optimization", "weight": 0.9},
+    {"term": "streaming data pipelines", "weight": 1.1},
+    {"term": "data quality", "weight": 0.9},
+    {"term": "etl", "aliases": ["extract, transform, load"], "weight": 1.1},
+    {"term": "data warehousing", "weight": 1.1}
   ],
   "security": [
     {"term": "oauth", "weight": 0.9},
     {"term": "jwt", "aliases": ["json web token"], "weight": 0.9},
     {"term": "ssl/tls", "weight": 0.9},
     {"term": "encryption", "weight": 0.9},
-    {"term": "owasp", "weight": 1.0}
+    {"term": "owasp", "weight": 1.0},
+    {"term": "data security", "weight": 1.0}
   ],
   "operating_systems": [
     {"term": "linux", "aliases": ["debian", "ubuntu", "centos", "red hat"], "weight": 0.7},
