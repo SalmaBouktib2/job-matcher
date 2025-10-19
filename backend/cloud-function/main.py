@@ -6,9 +6,13 @@ import os
 import re
 from google.cloud import storage, documentai_v1 as documentai
 
+from google.api_core.client_options import ClientOptions
+
 # Initialize clients outside the function for better performance
 storage_client = storage.Client()
-documentai_client = documentai.DocumentProcessorServiceClient()
+documentai_client = documentai.DocumentProcessorServiceClient(
+    client_options=ClientOptions(api_endpoint="eu-documentai.googleapis.com")
+)
 
 # Get bucket name from environment variables (set in Terraform)
 KEYWORD_DATA_BUCKET = os.environ.get('KEYWORD_DATA_BUCKET')

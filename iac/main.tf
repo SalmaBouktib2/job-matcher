@@ -66,10 +66,26 @@ resource "google_cloudfunctions_function" "resume_matcher_cf" {
   }
 }
 
+# Allow unauthenticated access to the function
+resource "google_cloudfunctions_function_iam_member" "invoker" {
+  project        = google_cloudfunctions_function.resume_matcher_cf.project
+  region         = google_cloudfunctions_function.resume_matcher_cf.region
+  cloud_function = google_cloudfunctions_function.resume_matcher_cf.name
+  role           = "roles/cloudfunctions.invoker"
+  member         = "allUsers"
+}
+
+# Grant public read access to the frontend bucket
+resource "google_storage_bucket_iam_member" "public_access" {
+  bucket = google_storage_bucket.frontend_bucket.name
+  role   = "roles/storage.objectViewer"
+  member = "allUsers"
+}
+
 # Output the frontend URL for easy access
 output "frontend_url" {
   description = "URL for the static frontend website."
-  value       = "http://${google_storage_bucket.frontend_bucket.name}/index.html"
+  value       = "https://storage.googleapis.com/${google_storage_bucket.frontend_bucket.name}/index.html"
 }
 
 # Output Cloud Function URL for frontend to use

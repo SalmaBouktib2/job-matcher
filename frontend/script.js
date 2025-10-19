@@ -8,10 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const matchedSkillsList = document.getElementById('matchedSkills');
     const missingSkillsList = document.getElementById('missingSkills');
     const errorMessageDiv = document.getElementById('errorMessage');
+    const CLOUD_FUNCTION_URL = "https://europe-west1-project-processing-475110.cloudfunctions.net/match-resume";
 
-    // --- IMPORTANT: REPLACE WITH YOUR CLOUD FUNCTION URL ---
-    const CLOUD_FUNCTION_URL = "YOUR_CLOUD_FUNCTION_URL_FROM_TERRAFORM_OUTPUT";
-    // --- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ---
 
     submitBtn.addEventListener('click', async () => {
         const resumeFile = resumeFileInput.files[0];
