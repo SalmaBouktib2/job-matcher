@@ -1,26 +1,30 @@
+console.log("Script loaded");
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log("DOM fully loaded and parsed");
 
-    const resumeFileInput = document.getElementById('resumeFile');
-    const jobDescriptionTextarea = document.getElementById('jobDescription');
-    const submitBtn = document.getElementById('submitBtn');
-    const btnText = document.querySelector('.btn-text');
-    const loader = document.querySelector('.loader');
-    const resultsDiv = document.getElementById('results');
-    const matchPercentageSpan = document.getElementById('matchPercentage');
-    const missingSkillsList = document.getElementById('missingSkills');
-    const errorMessageDiv = document.getElementById('errorMessage');
-    const CLOUD_FUNCTION_URL = "https://europe-west1-project-processing-475110.cloudfunctions.net/match-resume";
-
-    if (!submitBtn) {
-        console.error("Submit button not found!");
+    const matchForm = document.getElementById('matchForm');
+    if (!matchForm) {
+        console.error("Form with id 'matchForm' not found!");
         return;
     }
-    console.log("Submit button found");
+    console.log("Form found:", matchForm);
 
-    submitBtn.addEventListener('click', async (e) => {
-        console.log("Analyze Match button clicked");
+    matchForm.addEventListener('submit', async (e) => {
+        console.log("Form submitted");
         e.preventDefault();
+        console.log("Default form submission prevented");
+
+        const resumeFileInput = document.getElementById('resumeFile');
+        const jobDescriptionTextarea = document.getElementById('jobDescription');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.querySelector('.btn-text');
+        const loader = document.querySelector('.loader');
+        const resultsDiv = document.getElementById('results');
+        const matchPercentageSpan = document.getElementById('matchPercentage');
+        const missingSkillsList = document.getElementById('missingSkills');
+        const errorMessageDiv = document.getElementById('errorMessage');
+        const CLOUD_FUNCTION_URL = "https://europe-west1-project-processing-475110.cloudfunctions.net/match-resume";
 
         const resumeFile = resumeFileInput.files[0];
         const jobDescriptionText = jobDescriptionTextarea.value;

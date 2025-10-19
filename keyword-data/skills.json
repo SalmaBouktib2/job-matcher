@@ -7,14 +7,21 @@
     {"term": "scala", "weight": 1.0},
     {"term": "go", "aliases": ["golang"], "weight": 1.0},
     {"term": "c++", "aliases": ["cpp"], "weight": 1.0},
-    {"term": "c#", "aliases": ["csharp"], "weight": 1.0},
+    {"term": "c#", "aliases": ["csharp", ".net"], "weight": 1.0},
     {"term": "ruby", "weight": 1.0},
     {"term": "rust", "weight": 1.0},
     {"term": "swift", "weight": 1.0},
     {"term": "kotlin", "weight": 1.0},
     {"term": "php", "weight": 1.0},
     {"term": "html", "aliases": ["html5"], "weight": 0.5},
-    {"term": "css", "aliases": ["css3"], "weight": 0.5}
+    {"term": "css", "aliases": ["css3", "scss", "sass"], "weight": 0.5},
+    {"term": "sql", "weight": 0.8},
+    {"term": "bash", "aliases": ["shell script"], "weight": 0.7},
+    {"term": "perl", "weight": 0.6},
+    {"term": "lisp", "weight": 0.6},
+    {"term": "haskell", "weight": 0.6},
+    {"term": "f#", "weight": 0.6},
+    {"term": "r", "weight": 0.9}
   ],
   "web_frameworks": [
     {"term": "react", "aliases": ["react.js", "reactjs"], "weight": 1.1},
@@ -23,12 +30,47 @@
     {"term": "django", "weight": 1.1},
     {"term": "flask", "weight": 1.1},
     {"term": "spring", "aliases": ["spring boot"], "weight": 1.1},
-    {"term": "express", "aliases": ["express.js"], "weight": 1.0}
+    {"term": "express", "aliases": ["express.js"], "weight": 1.0},
+    {"term": "ruby on rails", "aliases": ["rails"], "weight": 1.1},
+    {"term": "asp.net", "weight": 1.1},
+    {"term": "laravel", "weight": 1.1},
+    {"term": "next.js", "weight": 1.1},
+    {"term": "nuxt.js", "weight": 1.1},
+    {"term": "gatsby", "weight": 1.1},
+    {"term": "graphql", "weight": 1.0},
+    {"term": "websockets", "weight": 1.0}
   ],
-  "cloud_platforms": [
+  "cloud_platforms_gcp": [
     {"term": "gcp", "aliases": ["google cloud", "google cloud platform"], "weight": 1.2},
+    {"term": "cloud run", "weight": 1.1},
+    {"term": "app engine", "weight": 1.1},
+    {"term": "compute engine", "weight": 1.1},
+    {"term": "gke", "aliases": ["google kubernetes engine"], "weight": 1.1},
+    {"term": "cloud functions", "weight": 1.1},
+    {"term": "bigquery", "weight": 1.1},
+    {"term": "cloud storage", "weight": 1.0},
+    {"term": "pub/sub", "weight": 1.0}
+  ],
+  "cloud_platforms_aws": [
     {"term": "aws", "aliases": ["amazon web services"], "weight": 1.2},
-    {"term": "azure", "aliases": ["microsoft azure"], "weight": 1.2}
+    {"term": "ec2", "weight": 1.1},
+    {"term": "lambda", "weight": 1.1},
+    {"term": "s3", "weight": 1.0},
+    {"term": "rds", "weight": 1.0},
+    {"term": "eks", "aliases": ["elastic kubernetes service"], "weight": 1.1},
+    {"term": "ecs", "weight": 1.1},
+    {"term": "dynamodb", "weight": 1.1},
+    {"term": "sqs", "weight": 1.0},
+    {"term": "sns", "weight": 1.0}
+  ],
+  "cloud_platforms_azure": [
+    {"term": "azure", "aliases": ["microsoft azure"], "weight": 1.2},
+    {"term": "azure functions", "weight": 1.1},
+    {"term": "azure app service", "weight": 1.1},
+    {"term": "azure virtual machines", "weight": 1.1},
+    {"term": "aks", "aliases": ["azure kubernetes service"], "weight": 1.1},
+    {"term": "blob storage", "weight": 1.0},
+    {"term": "cosmos db", "weight": 1.1}
   ],
   "databases": [
     {"term": "postgresql", "aliases": ["postgres"], "weight": 0.8},
@@ -37,7 +79,10 @@
     {"term": "cassandra", "weight": 0.8},
     {"term": "redis", "weight": 0.8},
     {"term": "sqlite", "weight": 0.8},
-    {"term": "oracle", "weight": 0.8}
+    {"term": "oracle", "weight": 0.8},
+    {"term": "mariadb", "weight": 0.8},
+    {"term": "couchbase", "weight": 0.8},
+    {"term": "firebase", "weight": 0.8}
   ],
   "devops_tools": [
     {"term": "kubernetes", "aliases": ["k8s"], "weight": 1.1},
@@ -48,18 +93,26 @@
     {"term": "git", "weight": 1.0},
     {"term": "gitlab", "weight": 1.0},
     {"term": "circleci", "weight": 1.0},
-    {"term": "travis ci", "weight": 1.0}
+    {"term": "travis ci", "weight": 1.0},
+    {"term": "spinnaker", "weight": 1.0},
+    {"term": "argocd", "weight": 1.0},
+    {"term": "prometheus", "weight": 1.0},
+    {"term": "grafana", "weight": 1.0}
   ],
-  "data_science": [
+  "data_science_ml_ai": [
     {"term": "pandas", "weight": 1.1},
     {"term": "numpy", "weight": 1.1},
     {"term": "scikit-learn", "aliases": ["sklearn"], "weight": 1.1},
     {"term": "tensorflow", "weight": 1.1},
     {"term": "pytorch", "weight": 1.1},
     {"term": "matplotlib", "weight": 1.0},
-    {"term": "seaborn", "weight": 1.0}
+    {"term": "seaborn", "weight": 1.0},
+    {"term": "keras", "weight": 1.1},
+    {"term": "opencv", "weight": 1.1},
+    {"term": "nlp", "aliases": ["natural language processing"], "weight": 1.2},
+    {"term": "computer vision", "weight": 1.2}
   ],
-  "concepts": [
+  "software_engineering_concepts": [
     {"term": "agile", "weight": 0.7},
     {"term": "scrum", "weight": 0.7},
     {"term": "rest", "aliases": ["restful"], "weight": 0.9},
@@ -68,7 +121,18 @@
     {"term": "ci/cd", "weight": 1.0},
     {"term": "machine learning", "aliases": ["ml"], "weight": 1.2},
     {"term": "data structures", "weight": 1.0},
-    {"term": "algorithms", "weight": 1.0}
+    {"term": "algorithms", "weight": 1.0},
+    {"term": "tdd", "aliases": ["test driven development"], "weight": 0.8},
+    {"term": "bdd", "aliases": ["behavior driven development"], "weight": 0.8},
+    {"term": "ddd", "aliases": ["domain driven design"], "weight": 0.8},
+    {"term": "solid", "weight": 0.8}
+  ],
+  "security": [
+    {"term": "oauth", "weight": 0.9},
+    {"term": "jwt", "aliases": ["json web token"], "weight": 0.9},
+    {"term": "ssl/tls", "weight": 0.9},
+    {"term": "encryption", "weight": 0.9},
+    {"term": "owasp", "weight": 1.0}
   ],
   "operating_systems": [
     {"term": "linux", "aliases": ["debian", "ubuntu", "centos", "red hat"], "weight": 0.7},
@@ -80,7 +144,8 @@
     {"term": "spark", "aliases": ["apache spark"], "weight": 1.1},
     {"term": "kafka", "aliases": ["apache kafka"], "weight": 1.1},
     {"term": "flink", "aliases": ["apache flink"], "weight": 1.1},
-    {"term": "hive", "aliases": ["apache hive"], "weight": 1.1}
+    {"term": "hive", "aliases": ["apache hive"], "weight": 1.1},
+    {"term": "presto", "weight": 1.1}
   ],
   "mobile_development": [
     {"term": "ios", "weight": 1.0},
@@ -94,9 +159,10 @@
     {"term": "chai", "weight": 1.0},
     {"term": "selenium", "weight": 1.0},
     {"term": "pytest", "weight": 1.0},
-    {"term": "junit", "weight": 1.0}
+    {"term": "junit", "weight": 1.0},
+    {"term": "cypress", "weight": 1.0}
   ],
-  "project_management": [
+  "project_management_tools": [
     {"term": "jira", "weight": 0.8},
     {"term": "trello", "weight": 0.8},
     {"term": "asana", "weight": 0.8},
@@ -107,5 +173,10 @@
     {"term": "sketch", "weight": 0.9},
     {"term": "adobe xd", "weight": 0.9},
     {"term": "invision", "weight": 0.9}
+  ],
+  "business_platforms": [
+    {"term": "salesforce", "weight": 0.9},
+    {"term": "sap", "weight": 0.9},
+    {"term": "sharepoint", "weight": 0.9}
   ]
 }
