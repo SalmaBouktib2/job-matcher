@@ -10,12 +10,6 @@ This project is a simple web application that matches job descriptions with resu
 *   Get a match score based on common keywords.
 
 
-
-*   **Frontend:** HTML, CSS, JavaScript
-*   **Backend:** Python (Cloud Function)
-*   **Infrastructure as Code (IaC):** Terraform
-*   **CI/CD:** Google Cloud Build
-
 ## Project Structure
 
 ```
@@ -53,4 +47,4 @@ job-matcher/
 
 ## Screenshot
 
-![App Screenshot](![alt text](image.png))
+![alt text](image.png)
